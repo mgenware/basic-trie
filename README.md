@@ -15,7 +15,7 @@ yarn add basic-trie
 ## Usage
 
 ```ts
-import Trie from 'basic-trie`;
+import Trie from 'basic-trie';
 
 // Create a new trie.
 const trie = new Trie<number, string>();
@@ -23,6 +23,7 @@ const trie = new Trie<number, string>();
 trie.get([1, 2, 3]);
 // undefined
 
+// Set a value.
 trie.set([1, 2, 3], '123');
 
 trie.get([1, 2, 3]);
