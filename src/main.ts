@@ -1,14 +1,12 @@
 class Node<K, V> {
+  // The underlying map of this node.
   map = new Map<K, Node<K, V>>();
+  // The value associated with this entry.
   value: V | null = null;
 }
 
 export default class Trie<K, V> {
   #rootNode = new Node<K, V>();
-
-  get count(): number {
-    return this.#rootNode.map.size;
-  }
 
   set(keys: K[], val: V) {
     let node = this.#rootNode;
