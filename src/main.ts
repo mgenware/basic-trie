@@ -1,6 +1,7 @@
 class Node<K, V> {
   // The underlying map of this node.
   map = new Map<K, Node<K, V>>();
+
   // The value associated with this entry.
   value: V | null = null;
 }
@@ -8,7 +9,7 @@ class Node<K, V> {
 export default class Trie<K, V> {
   #rootNode = new Node<K, V>();
 
-  set(keys: K[], val: V) {
+  set(keys: K[], val: V): void {
     let node = this.#rootNode;
     for (const key of keys) {
       const target = node.map.get(key);
