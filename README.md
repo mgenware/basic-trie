@@ -33,7 +33,7 @@ trie.get([1, 2]);
 // null
 // NOTE:
 // Returns null instead of undefined as trie starts with
-// [1, 2], but there's no value associated with [1, 2])
+// [1, 2], but there's no value associated with [1, 2].
 
 trie.get([1, 2, 3, 4]);
 // undefined
