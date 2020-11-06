@@ -40,7 +40,6 @@ function addMyPath(trie: MyTrie, s: string) {
 
 it('Wildcard: single wildcard', () => {
   const trie = new MyTrie();
-  trie.logging = true;
   addMyPath(trie, ':s');
   assert.deepStrictEqual(trie.getWithPayload(['a']), [':s', { s: 'a' }]);
   assert.deepStrictEqual(trie.getWithPayload([':s']), [':s', { s: ':s' }]);
@@ -49,7 +48,6 @@ it('Wildcard: single wildcard', () => {
 
 it('Wildcard: multiple wildcards', () => {
   const trie = new MyTrie();
-  trie.logging = true;
   addMyPath(trie, ':a/:b');
   assert.deepStrictEqual(trie.getWithPayload(['1', '2']), [':a/:b', { a: '1', b: '2' }]);
   assert.deepStrictEqual(trie.getWithPayload(['1', '2', '3']), [undefined, undefined]);
