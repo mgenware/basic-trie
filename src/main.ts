@@ -72,7 +72,7 @@ export default class Trie<K, V> {
    *   2: the payload returned by `getWildcardPayload`.
    * ]
    */
-  getWithPayloadCore(
+  private getWithPayloadCore(
     node: Node<K, V>,
     keys: K[],
     index: number,
