@@ -56,12 +56,14 @@ it('Wildcard: multiple wildcards', () => {
   assert.deepStrictEqual(trie.getWithPayload(['1']), [null, { a: '1' }]);
 });
 
-it('Wildcard: same level', () => {
+it('Wildcard: same level and precedence', () => {
   const trie = new MyTrie();
-  trie.logging = true;
   addMyPath(trie, ':a');
   addMyPath(trie, ':b');
-  assert.deepStrictEqual(trie.getWithPayload(['a']), [':s', { s: 'a' }]);
-  assert.deepStrictEqual(trie.getWithPayload([':s']), [':s', { s: ':s' }]);
-  assert.deepStrictEqual(trie.getWithPayload(['a', 'b']), [undefined, undefined]);
+  addMyPath(trie, ':c/:sub1');
+  addMyPath(trie, 'imp/:sub2');
+  assert.deepStrictEqual(trie.getWithPayload(['a']), [':a', { a: 'a' }]);
+  assert.deepStrictEqual(trie.getWithPayload(['a', 'b', 'c']), [undefined, undefined]);
+  assert.deepStrictEqual(trie.getWithPayload(['a', 'b']), [':c/:sub1', { c: 'a', sub1: 'b' }]);
+  assert.deepStrictEqual(trie.getWithPayload(['imp', 'b']), ['imp/:sub2', { sub2: 'b' }]);
 });

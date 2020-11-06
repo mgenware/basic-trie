@@ -12,6 +12,12 @@ export class Node<K, V> {
 
 export type PayloadType = Record<string, unknown>;
 
+enum ResultValue {
+  notFound,
+  partiallyFound,
+  found,
+}
+
 export default class Trie<K, V> {
   #rootNode = new Node<K, V>();
 
@@ -59,6 +65,13 @@ export default class Trie<K, V> {
     return result;
   }
 
+  /**
+   * Return values:
+   * [
+   *   1: the value associated with the given keys.
+   *   2: the payload returned by `getWildcardPayload`.
+   * ]
+   */
   getWithPayloadCore(
     node: Node<K, V>,
     keys: K[],
@@ -114,13 +127,17 @@ export default class Trie<K, V> {
             payload,
           )}`,
         );
-        secondAttemptResult = this.getWithPayloadCore(nodeValue, keys, index + 1, payload);
+        const res = this.getWithPayloadCore(nodeValue, keys, index + 1, payload);
+        const resValue = this.resultValue(res[0]);
         this.logWithKey(
           key,
           `Checking second attempt result "${JSON.stringify(secondAttemptResult[0])}"`,
         );
-        if (secondAttemptResult[0] !== undefined && secondAttemptResult[0] !== null) {
-          return secondAttemptResult;
+        if (resValue > this.resultValue(secondAttemptResult[0])) {
+          secondAttemptResult = res;
+          if (resValue >= ResultValue.found) {
+            return res;
+          }
         }
       }
 
@@ -160,5 +177,15 @@ export default class Trie<K, V> {
 
   private logWithKey(key: K, msg: string) {
     this.log(`KEY: ${key} | ${msg}`);
+  }
+
+  private resultValue(result: V | null | undefined): ResultValue {
+    if (result === undefined) {
+      return ResultValue.notFound;
+    }
+    if (result === null) {
+      return ResultValue.partiallyFound;
+    }
+    return ResultValue.found;
   }
 }
