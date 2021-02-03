@@ -1,6 +1,6 @@
 /* eslint-disable class-methods-use-this */
 import * as assert from 'assert';
-import Trie, { PayloadType } from '..';
+import Trie, { PayloadType } from '../dist/main.js';
 
 it('Main', () => {
   const trie = new Trie<number, string>();
