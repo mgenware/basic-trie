@@ -50,7 +50,7 @@ trie.get([2, 1]);
 Wildcards are supported by overriding a few methods of `Trie` class, example:
 
 ```ts
-import Trie from 'basic-trie';
+import Trie, { PayloadType } from 'basic-trie';
 
 class MyTrie extends Trie<string, string> {
   isKeyWildcard(key: string): boolean {
