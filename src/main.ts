@@ -85,6 +85,9 @@ export default class Trie<K, V> {
     }
 
     const key = keys[index];
+    if (!key) {
+      throw new Error(`Unexpected undefined value at index ${index}`);
+    }
     this.logWithKey(key, `Getting value with key "${key}"`);
 
     let firstAttemptResult: [V | undefined | null, PayloadType | undefined] = [

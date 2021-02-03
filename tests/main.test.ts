@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 /* eslint-disable class-methods-use-this */
 import * as assert from 'assert';
 import Trie, { PayloadType } from '../dist/main.js';
