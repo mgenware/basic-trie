@@ -85,7 +85,7 @@ export default class Trie<K, V> {
     }
 
     const key = keys[index];
-    if (!key) {
+    if (key === undefined) {
       throw new Error(`Unexpected undefined value at index ${index}`);
     }
     this.logWithKey(key, `Getting value with key "${key}"`);
@@ -166,7 +166,7 @@ export default class Trie<K, V> {
   }
 
   private checkKeys(keys: K[]) {
-    if (!keys?.length) {
+    if (!keys.length) {
       throw new Error(`Empty keys, got "${JSON.stringify(keys)}"`);
     }
   }
