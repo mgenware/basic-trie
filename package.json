@@ -32,17 +32,17 @@
     "/dist/**/*.map"
   ],
   "devDependencies": {
-    "@types/mocha": "^8.2.0",
-    "@types/node": "^14.14.22",
-    "@typescript-eslint/eslint-plugin": "^4.14.2",
-    "@typescript-eslint/parser": "^4.14.2",
-    "daizong": "^0.12.2",
-    "eslint": "^7.19.0",
-    "eslint-config-airbnb-typescript-lite": "^12.0.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "^18.11.18",
+    "@typescript-eslint/eslint-plugin": "^5.49.0",
+    "@typescript-eslint/parser": "^5.49.0",
+    "daizong": "^0.25.6",
+    "eslint": "^8.32.0",
+    "eslint-config-mgenware": "^0.9.0",
     "eslint-plugin-import": "^2.22.1",
-    "mgenware-tsconfig-node": "^14.0.2",
-    "mocha": "^8.2.1",
-    "source-map-support": "^0.5.19",
-    "typescript": "^4.1.3"
+    "mgenware-tsconfig-node": "^14.3.0",
+    "mocha": "^10.2.0",
+    "source-map-support": "^0.5.21",
+    "typescript": "^4.9.4"
   }
 }

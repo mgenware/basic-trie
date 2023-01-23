@@ -13,14 +13,18 @@ it('Main', () => {
   assert.strictEqual(trie.get([1, 2, 3, 4]), undefined);
   assert.strictEqual(trie.get([1]), null);
   assert.strictEqual(trie.get([2, 1]), undefined);
+
+  trie.set([1, 2, 3, 4], '4');
+  assert.strictEqual(trie.get([1, 2, 3]), '123');
+  assert.strictEqual(trie.get([1, 2, 3, 4]), '4');
 });
 
 class MyTrie extends Trie<string, string> {
-  isKeyWildcard(key: string): boolean {
+  override isKeyWildcard(key: string): boolean {
     return key.startsWith(':');
   }
 
-  getWildcardPayload(
+  override getWildcardPayload(
     key: string,
     wildcardName: string,
     _wildcardValue: string | null,
