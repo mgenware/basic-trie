@@ -9,7 +9,7 @@ A tiny TypeScript trie implementation with limited wildcards support.
 ## Installation
 
 ```sh
-yarn add basic-trie
+npm add basic-trie
 ```
 
 ## Usage
@@ -31,15 +31,13 @@ trie.get([1, 2, 3]);
 
 trie.get([1, 2]);
 // null
-// NOTE:
-// Returns null instead of undefined as trie starts with
-// [1, 2], but there's no value associated with [1, 2].
+// Returns null instead of undefined as [1, 2] matches a part of a record path [1, 2, 3].
 
 trie.get([1, 2, 3, 4]);
 // undefined
 
 trie.get([1]);
-// null
+// null (partial match)
 
 trie.get([2, 1]);
 // undefined
